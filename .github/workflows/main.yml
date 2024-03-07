@@ -63,6 +63,9 @@ jobs:
       - name: Export KUBECONFIG
         run: export KUBECONFIG=$HOME/.kube/hello-application-kubeconfig.yaml
 
+      - name: Print contents of config.yaml
+        run: cat $HOME/.kube/hello-application-kubeconfig.yaml
+
       # Deploy to Kubernetes Cluster
       - name: Copy HELLO_APP_DEPLOYMENT to file
         run: |
