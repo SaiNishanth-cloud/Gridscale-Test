@@ -3,7 +3,7 @@ name: Deploy to Kubernetes
 on:
   push:
     branches:
-      - main  # Trigger on pushes to master branch
+      - main  # Trigger on pushes to main branch
 
 jobs:
   deploy:
@@ -27,24 +27,29 @@ jobs:
           docker build -t ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }} .
           docker push ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }}:latest
 
-       - name: Install gridscalecloud
-         run: |
+      # Install gridscalecloud
+      - name: Install gridscalecloud
+        run: |
           curl -sL https://cli.gridscale.io/install.sh | bash
           gscl version
 
+      # Set up Gridscale Configuration
       - name: Set up Gridscale Configuration
         run: |
           echo "${{ secrets.CONFIG_FILE }}" > gridscale-config.yaml && gscloud --config gridscale-config.yaml make-config
 
+      # Retrieve Kubeconfig Secret
       - name: Retrieve Kubeconfig Secret
         run: |
           # Retrieve kubeconfig from secret management service
           # and store it in a file
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/hello-application-kubeconfig.yaml
 
+      # Export KUBECONFIG
       - name: Export KUBECONFIG
         run: export KUBECONFIG=~/.kube/hello-application-kubeconfig.yaml
 
+      # Deploy to Kubernetes Cluster
       - name: Deploy to Kubernetes Cluster
         run: |
           kubectl apply -f ${{ secrets.HELLO_APP_DEPLOYMENT }}.yaml
