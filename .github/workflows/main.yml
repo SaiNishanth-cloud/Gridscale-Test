@@ -27,6 +27,11 @@ jobs:
           docker build -t ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }} .
           docker push ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }}:latest
 
+       - name: Install gridscalecloud
+         run: |
+          curl -sL https://cli.gridscale.io/install.sh | bash
+          gscl version
+
       - name: Set up Gridscale Configuration
         run: |
           echo "${{ secrets.CONFIG_FILE }}" > gridscale-config.yaml && gscloud --config gridscale-config.yaml make-config
