@@ -26,13 +26,15 @@ jobs:
         run: |
           docker build -t ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }} .
           docker push ${{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }}:latest
-
-      # Install gridscalecloud
+          
       - name: Install gridscalecloud
         run: |
-          curl -sL https://cli.gridscale.io/install.sh | bash
+          curl -LO https://github.com/gridscale/gscloud/releases/download/v0.13.0/gscloud_0.13.0_linux_arm64.zip
+          unzip gscloud_0.13.0_linux_arm64.zip
+          sudo mv gscl /usr/local/bin/
+          sudo chmod +x /usr/local/bin/gscl
           gscl version
-
+    
       # Set up Gridscale Configuration
       - name: Set up Gridscale Configuration
         run: |
