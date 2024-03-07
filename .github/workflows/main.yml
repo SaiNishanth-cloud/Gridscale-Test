@@ -55,4 +55,4 @@ jobs:
       # Deploy to Kubernetes Cluster
       - name: Deploy to Kubernetes Cluster
         run: |
-          kubectl apply -f ${{ secrets.HELLO_APP_DEPLOYMENT }}.yaml
+          kubectl create -f ${{ secrets.HELLO_APP_DEPLOYMENT }}.yaml
