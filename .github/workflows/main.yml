@@ -42,4 +42,4 @@ jobs:
 
       - name: Deploy to Kubernetes Cluster
         run: |
-          kubectl apply -f hello-app-deployment.yaml
+          kubectl apply -f ${{ secrets.HELLO_APP_DEPLOYMENT }}.yaml
