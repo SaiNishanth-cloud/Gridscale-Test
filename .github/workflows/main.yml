@@ -44,8 +44,8 @@ jobs:
           echo "${{ secrets.CONFIG_FILE }}" > $HOME/.config/gridscale/config.yaml
           gscloud --config $HOME/.config/gridscale/config.yaml make-config
 
-      - name: Print contents of config.yaml
-        run: cat $HOME/.config/gridscale/config.yaml
+      #- name: Print contents of config.yaml
+       #run: cat $HOME/.config/gridscale/config.yaml
 
 
       - name: Change directory to gridscale
@@ -63,13 +63,14 @@ jobs:
       - name: Export KUBECONFIG
         run: export KUBECONFIG=$HOME/.kube/hello-application-kubeconfig.yaml
 
-      - name: Print contents of config.yaml
-        run: cat $HOME/.kube/hello-application-kubeconfig.yaml
+      #- name: Print contents of config.yaml
+       # run: cat $HOME/.kube/hello-application-kubeconfig.yaml
 
       # Deploy to Kubernetes Cluster
       - name: Copy HELLO_APP_DEPLOYMENT to file
         run: |
           echo "${{ secrets.HELLO_APP_DEPLOYMENT }}" > hello-application-deployment.yaml
+          echo pwd
 
       - name: Deploy to Kubernetes Cluster
         run: |
