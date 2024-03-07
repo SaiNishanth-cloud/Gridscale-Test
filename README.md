@@ -6,6 +6,7 @@ This repository contains the implementation of a "Hello World" API using Python 
 
 
 Features
+
 Python Application with Flask: Implements the "Hello World" API.
 Swagger for API Documentation: Provides clear documentation for API endpoints.
 Horizontal Pod Autoscaler (HPA): Ensures scalability of the application.
@@ -15,6 +16,7 @@ SLOs and SLAs: Defines Service Level Objectives (SLOs) and Service Level Agreeme
 
 
 Usage
+
 Refer to the Swagger documentation for API usage.
 Use ELK setup for monitoring and visualization of logs.
 Consult the network diagram to understand the architecture.
