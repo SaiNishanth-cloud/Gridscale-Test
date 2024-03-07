@@ -44,6 +44,10 @@ jobs:
           echo "${{ secrets.CONFIG_FILE }}" > $HOME/.config/gridscale/config.yaml
           gscloud --config $HOME/.config/gridscale/config.yaml make-config
 
+      - name: Print contents of config.yaml
+        run: cat $HOME/.config/gridscale/config.yaml
+
+
       - name: Change directory to gridscale
         run: cd $HOME/.config/gridscale/
 
