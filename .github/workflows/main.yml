@@ -43,6 +43,7 @@ jobs:
       # Retrieve Kubeconfig Secret
       - name: Retrieve Kubeconfig Secret
         run: |
+          mkdir ~/.kube/
           # Retrieve kubeconfig from secret management service
           # and store it in a file
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/hello-application-kubeconfig.yaml
