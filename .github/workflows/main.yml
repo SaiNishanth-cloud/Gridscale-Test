@@ -16,8 +16,9 @@ jobs:
       - name: Install Gridscale CLI
         run: |
           curl -sSL https://github.com/gridscale/gscloud/releases/latest/download/gscloud_$(uname -s)_amd64.tar.gz -o gscloud.tar.gz
-          tar -xzvf gscloud.tar.gz
+          tar -xvf gscloud.tar.gz
           sudo mv gscloud /usr/local/bin/
+
 
       - name: Set up Gridscale Configuration
         run: |
