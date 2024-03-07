@@ -17,12 +17,15 @@ jobs:
         run: |
           # Download the gscloud binary zip file
           curl -sSL -o gscloud.zip https://github.com/gridscale/gscloud/releases/download/0.13.0/gscloud_0.13.0_darwin_amd64.zip
+          # Check if the zip file is valid
+          if ! unzip -t gscloud.zip >/dev/null 2>&1; then
+            echo "Error: Failed to validate the zip file"
+            exit 1
+          fi
           # Unzip the gscloud binary
-          unzip gscloud.zip
+          unzip -q gscloud.zip
           # Move the gscloud binary to /usr/local/bin
           sudo mv gscloud /usr/local/bin/
-
-
 
       - name: Set up Gridscale Configuration
         run: |
