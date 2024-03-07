@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-app-deployment
+spec:
+  replicas: 1  # Number of replicas, adjust as needed
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      containers:
+      - name: hello-app
+        image: illusion16/hello-app:latest
+        ports:
+        - containerPort: 5000  # Updated containerPort to 5000
+        resources:
+          requests:
+            cpu: "100m"  # Specify CPU request here
+            memory: "128Mi"  # Add memory request if needed
+          limits:
+            cpu: "200m"  # Optionally specify CPU limit
+            memory: "256Mi"  # Optionally add memory limit if needed
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+          type: Directory	
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-app-service
+spec:
+  selector:
+    app: hello-app
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80  # Port on the service
+      targetPort: 5000  # Port on the container
+      nodePort: 30001  # Expose the service on this port on each node
