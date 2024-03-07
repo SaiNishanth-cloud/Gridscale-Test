@@ -24,8 +24,9 @@ jobs:
       # Build and push Docker image
       - name: Build and Push Docker Image
         run: |
-          docker build -t your-docker-username/your-image-name:latest .
-          docker push your-docker-username/your-image-name:latest
+          docker build -t {{ secrets.REPO_NAME }}/${{ secrets.IMAGE_NAME }}:latest .
+          docker tag {{ secrets.REPO_NAME }}/{{ secrets.IMAGE_NAME }}:latest
+          docker push {{ secrets.REPO_NAME }}/{{ secrets.IMAGE_NAME }}:latest
 
       - name: Set up Gridscale Configuration
         run: |
