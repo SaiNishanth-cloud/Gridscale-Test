@@ -58,6 +58,7 @@ jobs:
           # Retrieve kubeconfig from secret management service
           # and store it in a file
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/hello-application-kubeconfig.yaml
+          pwd
 
       # Export KUBECONFIG
       - name: Export KUBECONFIG
@@ -75,4 +76,5 @@ jobs:
       - name: Deploy to Kubernetes Cluster
         run: |
           kubectl create -f hello-application-deployment.yaml
+          pwd
 
