@@ -44,8 +44,8 @@ jobs:
           echo "${{ secrets.CONFIG_FILE }}" > $HOME/.config/gridscale/config.yaml
           gscloud --config $HOME/.config/gridscale/config.yaml make-config
 
-      #- name: Print contents of config.yaml
-       #run: cat $HOME/.config/gridscale/config.yaml
+      - name: Print contents of config.yaml
+        run: cat $HOME/.config/gridscale/config.yaml
 
 
       - name: Change directory to gridscale
@@ -58,6 +58,8 @@ jobs:
           # Retrieve kubeconfig from secret management service
           # and store it in a file
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/hello-application-kubeconfig.yaml
+          cd ~/.kube
+          cat hello-application-kubeconfig.yaml
           pwd
 
       # Export KUBECONFIG
