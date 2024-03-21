@@ -1,7 +1,12 @@
+from datetime import datetime
 from flask import Flask, request, jsonify, redirect
 from flasgger import Swagger
-app = Flask(__name__)
-swagger = Swagger(app)
+import logging
+app = Flask(__name__) # Creates  a new Flask web server.
+swagger = Swagger(app) 
+
+logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 @app.route('/helloworld', methods=['POST'])
 def helloworld():
@@ -33,6 +38,11 @@ def helloworld():
     """
     data = request.json
     name = data.get('name', 'World')
+    # Log the API call
+    user_id = request.headers.get('User-ID', 'Unknown')
+    api_endpoint = '/helloworld'
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logging.info(f"User {user_id} called {api_endpoint} at {timestamp}")
     response= {'message':f'Hello {name}'}
     return jsonify(response)
 
