@@ -39,11 +39,17 @@ jobs:
         #run: mkdir -p $HOME/.config/gridscale/
         
       # Set up Gridscale Configuration
+      #- name: Set up Gridscale Configuration
+        #run: |
+          #echo "${{ secrets.CONFIG_FILE }}" > $HOME/work/Gridscale-Test/Gridscale-Test
+          #ls
+          #gscloud --config $HOME/work/Gridscale-Test/Gridscale-Test/config.yaml make-config
+
       - name: Set up Gridscale Configuration
         run: |
-          echo "${{ secrets.CONFIG_FILE }}" > $HOME/work/Gridscale-Test/Gridscale-Test
-          ls
-          gscloud --config $HOME/work/Gridscale-Test/Gridscale-Test/config.yaml make-config
+          echo "${{ secrets.CONFIG_FILE }}" > config.yaml
+          pwd
+
 
       #- name: Print contents of config.yaml
         #run: cat $HOME/.config/gridscale/config.yaml
