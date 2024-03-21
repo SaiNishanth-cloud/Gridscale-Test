@@ -35,21 +35,21 @@ jobs:
           sudo chmod +x /usr/local/bin/gscloud
           gscloud version
 
-      - name: Create gridscale directory
-        run: mkdir -p $HOME/.config/gridscale/
+      #- name: Create gridscale directory
+        #run: mkdir -p $HOME/.config/gridscale/
         
       # Set up Gridscale Configuration
       - name: Set up Gridscale Configuration
         run: |
-          echo "${{ secrets.CONFIG_FILE }}" > $HOME/.config/gridscale/config.yaml
-          gscloud --config $HOME/.config/gridscale/config.yaml make-config
+          echo "${{ secrets.CONFIG_FILE }}" > $HOME/runner/work/Gridscale-Test/Gridscale-Test
+          gscloud --config $HOME/home/runner/work/Gridscale-Test/Gridscale-Test make-config
 
       #- name: Print contents of config.yaml
         #run: cat $HOME/.config/gridscale/config.yaml
 
 
-      - name: Change directory to gridscale
-        run: cd $HOME/.config/gridscale/
+      #- name: Change directory to gridscale
+        #run: cd $HOME/.config/gridscale/
 
       # Retrieve Kubeconfig Secret
       - name: Retrieve Kubeconfig Secret
