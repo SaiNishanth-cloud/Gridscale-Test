@@ -42,6 +42,7 @@ jobs:
       - name: Set up Gridscale Configuration
         run: |
           echo "${{ secrets.CONFIG_FILE }}" > $HOME/work/Gridscale-Test/Gridscale-Test
+          ls
           gscloud --config $HOME/work/Gridscale-Test/Gridscale-Test/config.yaml make-config
 
       #- name: Print contents of config.yaml
