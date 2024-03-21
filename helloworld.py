@@ -38,11 +38,13 @@ def helloworld():
     """
     data = request.json
     name = data.get('name', 'World')
+
     # Log the API call
     user_id = request.headers.get('User-ID', 'Unknown')
     api_endpoint = '/helloworld'
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     logging.info(f"User {user_id} called {api_endpoint} at {timestamp}")
+    
     response= {'message':f'Hello {name}'}
     return jsonify(response)
 
