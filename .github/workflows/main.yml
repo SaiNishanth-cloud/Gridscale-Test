@@ -70,9 +70,14 @@ jobs:
           cat hello-application-kubeconfig.yaml
           pwd
 
+      - name: Get Nodes
+        run: |
+          export KUBECONFIG=~/.kube/hello-application-kubeconfig.yaml
+          kubectl get nodes
+
       # Export KUBECONFIG
-      - name: Export KUBECONFIG
-        run: export KUBECONFIG=$HOME/.kube/hello-application-kubeconfig.yaml
+      #- name: Export KUBECONFIG
+        #run: export KUBECONFIG=$HOME/.kube/hello-application-kubeconfig.yaml
 
       #- name: Print contents of config.yaml
        # run: cat $HOME/.kube/hello-application-kubeconfig.yaml
