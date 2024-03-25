@@ -27,16 +27,11 @@ spec:
         volumeMounts:
         - name: varlog
           mountPath: /var/log
-        - name: applog
-          mountPath: /app
       volumes:
       - name: varlog
         hostPath:
           path: /var/log
-          type: Directory
-      - name: applog
-        emptyDir: {}	
-
+          type: DirectoryorCreate
 ---
 apiVersion: v1
 kind: Service

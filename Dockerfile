@@ -1,5 +1,11 @@
 FROM --platform=linux/amd64 python:3.8-slim-buster as build
 
+# Create directory for log files
+RUN mkdir -p /var/log/containers
+
+# Set permissions for the log directory
+RUN chmod 755 /var/log/containers
+
 # Add the filebeat user and group
 RUN groupadd -r filebeat && useradd --no-log-init -r -g filebeat filebeat
 
