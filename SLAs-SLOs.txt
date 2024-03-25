@@ -1,23 +1,23 @@
-Service Level Objectives (SLOs) and Service Level Indicators (SLIs) are important metrics for defining and measuring service reliability and performance Here you can define SLOs and SLIs for the "Hello World" API, with a focus area availability, latency, and error costs:
+Service Level Objectives (SLOs) and Service Level Agreement (SLAs) are important metrics for defining and measuring service reliability and performance Here you can define SLOs and SLAs for the "Hello World" API, with a focus area availability, latency, and error costs:
 
 Available:
 
-SLI: Percentage of successful responses in a specified time period (HTTP status code 2xx).
-Sample SLI: Percentage of successful responses in the last 30 days.
+SLA: Percentage of successful responses in a specified time period (HTTP status code 2xx).
+Sample SLA: Percentage of successful responses in the last 30 days.
 SLO: Make sure the API is available at least 99.9% of the time.
 Example SLO: The API will be available 99.9% of the time.
 
 Delays:
 
-SLI: The response time or latency for a successful request, measured in milliseconds.
-Example SLI: 95 percent response time for successful requests.
+SLA: The response time or latency for a successful request, measured in milliseconds.
+Example SLA: 95 percent response time for successful requests.
 SLO: Ensure that the API responds within acceptable latency limits.
 Example SLO: 95% of requests will have a response time of less than 200 milliseconds.
   
 Number of errors:
 
-SLI: Percentage of failed responses (HTTP status codes 4xx and 5xx) at a specified time.
-Example SLI: Percentage of failed responses in the last 30 days.
+SLA: Percentage of failed responses (HTTP status codes 4xx and 5xx) at a specified time.
+Example SLA: Percentage of failed responses in the last 30 days.
 SLO: Maintain a low error rate to ensure a superior user experience.
 Example SLO: The error rate must be less than 0.5% of all requests in a given month.
-It is important that these SLIs are regularly monitored and monitored against defined SLOs to ensure that the service is meeting desired reliability and performance goals. If SLIs fall below SLO requirements, it can indicate problems that need to be addressed to maintain service quality at a high level of service.
+It is important that these SLAs are regularly monitored and monitored against defined SLOs to ensure that the service is meeting desired reliability and performance goals. If SLAs fall below SLO requirements, it can indicate problems that need to be addressed to maintain service quality at a high level of service.
